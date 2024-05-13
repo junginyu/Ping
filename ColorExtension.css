@@ -1,0 +1,10 @@
+:root {
+    background: #F7F7FC;
+    --primary-normal: #3869FA;
+    --text-normal: #171717;
+    --text-alternative: #8A8A8A;
+    --label-normal: #828287;
+    --label-alternative: #171717;
+    --line-normal: #E0E0E2;
+    --line-alternative: #171717;
+}
