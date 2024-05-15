@@ -1,5 +1,6 @@
+/* 색상 변수 정의 */
 :root {
-  background: #f7f7fc;
+  --background: #f7f7fc;
   --primary-normal: #3869fa;
   --text-normal: #171717;
   --text-alternative: #8a8a8a;
@@ -9,29 +10,92 @@
   --line-alternative: #171717;
 }
 
+/* Pretendard 기본 설정 */
 body {
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  font-family: "Pretendard", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--text-normal);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  padding: 40px 100px 20px 100px;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--line-normal);
 }
 
-.header button {
-  padding: 10px 20px;
-  font-size: 16px;
+.logo {
+  width: 83px;
 }
 
-.content {
-  margin-top: 20px;
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--text-normal);
+  font-weight: 500;
+}
+
+.main {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.main h1 {
+  font-family: "Laundry Gothic", sans-serif;
+  font-size: 60px;
+  font-weight: 800; /* 두껍게 설정 */
+  margin-bottom: 50px;
+  color: var(--text-normal);
+}
+
+.highlight {
+  color: var(--primary-normal);
+}
+
+.characters {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+}
+
+.character {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.character img {
+  height: 500px;
+  border-radius: 10px;
+  opacity: 0.5;
+  pointer-events: all;
+}
+
+.character-img:hover {
+  opacity: 1;
+}
+
+.character p {
+  margin-top: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--text-alternative);
+}
+
+/* 'Laundry Gothic' 웹폰트 포함 */
+@font-face {
+  font-family: "Laundry Gothic";
+  src: url("fonts/런드리고딕 Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Laundry Gothic";
+  src: url("fonts/런드리고딕 Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
 }

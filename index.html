@@ -3,94 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>카카오 간편로그인</title>
-    <!-- 카카오 JavaScript SDK -->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <!-- Config 파일 -->
-    <script src="config.js"></script>
+    <title>PING | 외국인 친구와 대화하기</title>
     <!-- 스타일 파일 -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Pretendard 폰트 포함 -->
+    <link
+      href="https://cdn.jsdelivr.net/gh/pretendard/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+    />
+    <!-- Config 파일 -->
+    <script src="config.js"></script>
+    <!-- 카카오 JavaScript SDK -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <!-- 로그인 스크립트 파일 -->
+    <script src="kakaoLogin.js" defer></script>
   </head>
   <body>
-    <div class="container">
-      <div class="header">
-        <h1>카카오 로그인 데모</h1>
-        <button id="auth-button" onclick="handleAuthButtonClick()">
-          로그인
-        </button>
+    <header class="header">
+      <img src="media/PING.png" alt="PING Logo" class="logo" />
+      <nav class="nav">
+        <a href="#">채팅</a>
+        <a href="#" id="auth-button" onclick="handleAuthButtonClick()"
+          >로그인</a
+        >
+      </nav>
+    </header>
+    <main class="main">
+      <h1 class="laundry-font" style="font-weight: bold">
+        어떤 <span class="highlight">외국인 친구</span>를 사귀고 싶나요?
+      </h1>
+      <div class="characters">
+        <div class="character">
+          <img src="media/Haily.svg" alt="Haily" class="character-img" />
+          <p>🇺🇸 Haily</p>
+        </div>
+        <div class="character">
+          <img src="media/JUN.svg" alt="JUN" class="character-img" />
+          <p>🇯🇵 JUN</p>
+        </div>
+        <div class="character">
+          <img src="media/Linda.svg" alt="Linda" class="character-img" />
+          <p>🇪🇸 Linda</p>
+        </div>
       </div>
-      <div class="content" id="content">
-        <p>로그인 상태에 따라 이곳에 다른 내용이 표시됩니다.</p>
-      </div>
-    </div>
-
-    <script>
-      // 카카오 SDK 초기화
-      Kakao.init(KAKAO_JAVASCRIPT_KEY); // 발급받은 JavaScript 키를 사용합니다.
-      console.log(Kakao.isInitialized()); // SDK 초기화 여부 확인 (true)
-
-      // 페이지 로드 시 로그인 상태 확인
-      window.onload = function () {
-        updateUI();
-      };
-
-      // 로그인 상태에 따라 UI 업데이트
-      function updateUI() {
-        const authButton = document.getElementById("auth-button");
-        const content = document.getElementById("content");
-
-        if (Kakao.Auth.getAccessToken()) {
-          authButton.textContent = "로그아웃";
-          content.innerHTML = "<p>로그인 되었습니다. 환영합니다!</p>";
-          displayUserInfo();
-        } else {
-          authButton.textContent = "로그인";
-          content.innerHTML = "<p>로그인 해주세요.</p>";
-        }
-      }
-
-      // 로그인 또는 로그아웃 버튼 클릭 핸들러
-      function handleAuthButtonClick() {
-        if (Kakao.Auth.getAccessToken()) {
-          logout();
-        } else {
-          loginWithKakao();
-        }
-      }
-
-      // 로그인 함수
-      function loginWithKakao() {
-        Kakao.Auth.authorize({
-          redirectUri: "http://localhost:5500/callback.html", // 리디렉트 URI 설정
-        });
-      }
-
-      // 로그아웃 함수
-      function logout() {
-        if (Kakao.Auth.getAccessToken()) {
-          Kakao.Auth.logout(function () {
-            alert("로그아웃 완료");
-            updateUI();
-          });
-        }
-      }
-
-      // 사용자 정보 표시
-      function displayUserInfo() {
-        Kakao.API.request({
-          url: "/v2/user/me",
-          success: function (res) {
-            const content = document.getElementById("content");
-            content.innerHTML += `
-                        <p>닉네임: ${res.kakao_account.profile.nickname}</p>
-                        <p>이메일: ${res.kakao_account.email}</p>
-                    `;
-          },
-          fail: function (error) {
-            console.log(error);
-          },
-        });
-      }
-    </script>
+    </main>
   </body>
 </html>
