@@ -2,9 +2,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>카카오 로그인 테스트</title>
+    
+    <!--카카오 SDK 로드-->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
+            integrity="sha384-kDljxUXHaJ9xAb2AzRd59KxjrFjzHa5TAoFQ6GbYTCAG0bjM55XohjjDT7tDDC01"
+            crossorigin="anonymous">
+    </script>
 </head>
 <body>
-    
+    <a id="kakao-login-btn" href="javascript:loginWithKakao()">
+        <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="222" alt="카카오 로그인 버튼" /><br>
+    </a>
+    <button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
+
+    <p id="token-result"></p>
+
+    <script type="text/javascript">
+        //카카오 초기화
+        Kakao.init('fb8afec79ff2856b01d950d49364b250'); // 사용하려는 앱의 JavaScript 키 입력
+        console.log(Kakao.isInitialized()); //초기화 판단여부 출력 코드
+
+        //동의 항목 띄우기
+        function loginWithKakao() {
+            Kakao.Auth.authorize({
+                redirectUri: 'http://localhost:5500',
+                state: 'userme',
+            });
+            Kakao.Auth.login({
+                success: function (authObj) {
+                    console.log(authObj); //access token 값
+                    Kakao.Auth.setAccessToken(authObj.access_token);  //access token 저장
+
+                    getInfo();
+                },
+                fail: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        //사용자 정보 받아오기
+        function getInfo() {
+            Kakao.API.request ({
+                url: '/v2/user/me',
+                success: function (res) {
+                    console.log(res);
+                    var email = res.kakao_account.email;
+
+                    console.log(email);
+                },
+                fail: function (err) {
+                    alert("로그인 실패" + JSON.stringify(err));
+                }
+            })
+        }
+
+        function kakaoLogout() {
+            if(!Kakao.Auth.getAccessToken()) {
+                alert('로그인이 되어 있지 않음');
+                return;
+            }
+            Kakao.Auth.logout(function() {
+                alert('로그아웃 완료 : ' + Kakao.Auth.getAccessToken());
+            });
+        };
+
+//         Kakao.Auth.logout()
+//   .then(function(response) {
+//     console.log(Kakao.Auth.getAccessToken()); // null
+//   })
+//   .catch(function(error) {
+//     console.log('Not logged in.');
+//   });
+
+
+        // function requestUserInfo() {
+        //     Kakao.API.request({
+        //         url: '/v2/user/me',
+        //     })
+        //         .then(function(res) {
+        //             alert(JSON.stringify(res));
+        //         })
+        //         .catch(function(err) {
+        //             alert('failed to request user information : ' + JSON.stringify(err));
+        //         })
+        // }
+
+        displayToken()
+        function displayToken() {
+            var token = getCookie('authorize-access-token');
+
+            if(token) {
+                Kakao.Auth.setAccessToken(token);
+                Kakao.Auth.getStatusInfo()
+                    .then(function(res) {
+                        if (res.status === 'connected') {
+                            document.getElementById('token-result').innerText
+                            = 'login success, token: ' + Kakao.Auth.getAccessToken();
+                        }
+                        })
+                    .catch(function(err) {
+                        Kakao.Auth.setAccessToken(null);
+                    });
+            }
+        }
+
+        function getCookie(name) {
+            var parts = document.cookie.split(name + '=');
+            if (parts.length === 2) { return parts[1].split(';')[0]; }
+        }
+    </script>
 </body>
 </html>
