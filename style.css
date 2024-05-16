@@ -8,6 +8,9 @@
   --label-alternative: #171717;
   --line-normal: #e0e0e2;
   --line-alternative: #171717;
+  --kakao-container: #fee500;
+  --kakao-symbol: #000000;
+  --kakao-label: #000000 0.85;
 }
 
 html,
@@ -154,6 +157,28 @@ body {
   transition-delay: 0s;
   opacity: 0;
   visibility: hidden;
+}
+
+.login-button {
+  /* display: none; */
+  border: none;
+  background-color: var(--kakao-container);
+  color: var(--kakao-label);
+  width: 335px;
+  height: 50px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.logout-button {
+  /* display: none; */
+  color: var(--label-alternative);
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .character-img-container:hover .chat-button {
