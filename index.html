@@ -19,6 +19,8 @@
     <script src="kakaoLogin.js" defer></script>
     <!-- 레이아웃 조정 스크립트 파일 -->
     <script src="layout.js" defer></script>
+    <!-- 캐릭터 선택 스크립트 파일 -->
+    <script src="characterHover.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -37,26 +39,40 @@
       </nav>
     </header>
     <main class="main">
-      <h1 class="laundry-font" style="font-weight: bold">
-        어떤 <span class="highlight">외국인 친구</span>를 사귀고 싶나요?
-      </h1>
+      <div id="main-title" class="default-title">
+        <h1 class="laundry-font" style="font-weight: bold">
+          어떤 <span class="highlight">외국인 친구</span>를 사귀고 싶나요?
+        </h1>
+      </div>
       <div class="characters">
         <div class="character">
-          <div class="character-img-container">
+          <div
+            class="character-img-container"
+            onmouseover="hoverCharacter('Haily')"
+            onmouseout="resetTitle()"
+          >
             <img src="media/Haily.svg" alt="Haily" class="character-img" />
             <button class="chat-button">대화해보기</button>
           </div>
           <p>🇺🇸 Haily</p>
         </div>
         <div class="character">
-          <div class="character-img-container">
+          <div
+            class="character-img-container"
+            onmouseover="hoverCharacter('JUN')"
+            onmouseout="resetTitle()"
+          >
             <img src="media/JUN.svg" alt="JUN" class="character-img" />
             <button class="chat-button">대화해보기</button>
           </div>
           <p>🇯🇵 JUN</p>
         </div>
         <div class="character">
-          <div class="character-img-container">
+          <div
+            class="character-img-container"
+            onmouseover="hoverCharacter('Linda')"
+            onmouseout="resetTitle()"
+          >
             <img src="media/Linda.svg" alt="Linda" class="character-img" />
             <button class="chat-button">대화해보기</button>
           </div>
