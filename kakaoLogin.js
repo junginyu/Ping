@@ -32,7 +32,7 @@ function updateUI() {
       authButton.onclick = handleAuthButtonClick;
     }
     if (logoutButton) {
-      logoutButton.style.display = "none";
+      logoutButton.style.display = "block";
     }
   }
 }
@@ -48,7 +48,6 @@ function loginWithKakao() {
 function logout() {
   if (Kakao.Auth.getAccessToken()) {
     Kakao.Auth.logout(function () {
-      alert("로그아웃 완료");
       window.location.href = "index.html"; // 로그아웃 후 메인 페이지로 이동
     });
   }
