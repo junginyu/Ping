@@ -201,6 +201,20 @@ body {
 
 /* login.html */
 
+.login-main {
+  text-align: center;
+  margin-top: 185px;
+}
+
+.login-content {
+  font-family: "Laundry Gothic", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  color: var(--text-normal);
+}
+
 .login-button {
   /* display: none; */
   border: none;
@@ -212,15 +226,6 @@ body {
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
-}
-
-.login-content {
-  font-family: "Laundry Gothic", sans-serif;
-  font-size: 40px;
-  font-weight: 800;
-  margin-top: 40px;
-  margin-bottom: 60px;
-  color: var(--text-normal);
 }
 
 /* profile.html */
