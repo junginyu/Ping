@@ -13,16 +13,26 @@
   --kakao-label: rgba(0, 0, 0, 0.85);
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+/* Laundry Gothic */
+@font-face {
+  font-family: "Laundry Gothic";
+  src: url("../fonts/런드리고딕 Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* Pretendard 기본 설정 */
+@font-face {
+  font-family: "Laundry Gothic";
+  src: url("../fonts/런드리고딕 Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.laundry-font {
+  font-family: "Laundry Gothic", sans-serif;
+}
+
+/* Pretendard */
 body {
   font-family: "Pretendard", sans-serif;
   margin: 0;
@@ -30,6 +40,16 @@ body {
   background-color: var(--background);
   color: var(--text-normal);
   overflow: auto;
+}
+
+/* 공통 스타일 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .header {
@@ -59,6 +79,8 @@ body {
   font-size: 22px;
   display: inline-block;
 }
+
+/* index.html */
 
 .main {
   text-align: center;
@@ -156,28 +178,6 @@ body {
   visibility: hidden;
 }
 
-.login-button {
-  /* display: none; */
-  border: none;
-  background-color: var(--kakao-container);
-  color: var(--kakao-label);
-  width: 335px;
-  height: 50px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.logout-button {
-  background-color: var(--background);
-  color: var(--label-alternative);
-  border: none;
-  font-size: 20px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
 .character-img-container:hover .chat-button {
   opacity: 1;
   visibility: visible;
@@ -200,17 +200,37 @@ body {
   animation: fadeIn 0.8s ease-in-out;
 }
 
-/* 'Laundry Gothic' 웹폰트 포함 */
-@font-face {
-  font-family: "Laundry Gothic";
-  src: url("fonts/런드리고딕 Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+/* login.html */
+
+.login-button {
+  /* display: none; */
+  border: none;
+  background-color: var(--kakao-container);
+  color: var(--kakao-label);
+  width: 335px;
+  height: 50px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-@font-face {
-  font-family: "Laundry Gothic";
-  src: url("fonts/런드리고딕 Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
+.login-content {
+  font-family: "Laundry Gothic", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  color: var(--text-normal);
+}
+
+/* profile.html */
+
+.logout-button {
+  background-color: var(--background);
+  color: var(--label-alternative);
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
 }
