@@ -32,16 +32,6 @@
   font-family: "Laundry Gothic", sans-serif;
 }
 
-/* Pretendard */
-body {
-  font-family: "Pretendard", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: var(--background);
-  color: var(--text-normal);
-  overflow: auto;
-}
-
 /* 공통 스타일 */
 html,
 body {
@@ -60,6 +50,15 @@ body {
   background-color: var(--background);
   border-bottom: 1px solid var(--line-normal);
   flex: 0 0 auto;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--text-normal);
+  overflow: auto;
 }
 
 .logo {
