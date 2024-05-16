@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PING | 외국인 친구와 대화하기</title>
+    <title>PING: 외국인 친구와 대화하기</title>
     <!-- 스타일 파일 -->
     <link rel="stylesheet" href="style.css" />
     <!-- Pretendard 폰트 포함 -->
@@ -21,6 +21,8 @@
     <script src="layout.js" defer></script>
     <!-- 캐릭터 선택 스크립트 파일 -->
     <script src="characterHover.js" defer></script>
+    <!-- 캐릭터 호버 스크립트 파일 -->
+    <script src="characterHover.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -28,14 +30,8 @@
         <img src="media/PING.png" alt="PING Logo" class="logo" />
       </a>
       <nav class="nav">
-        <a href="#" class="header-menu">채팅</a>
-        <a
-          href="#"
-          class="header-menu"
-          id="auth-button"
-          onclick="handleAuthButtonClick()"
-          >로그인</a
-        >
+        <a href="chat.html" class="header-menu">채팅</a>
+        <a href="login.html" class="header-menu">로그인</a>
       </nav>
     </header>
     <main class="main">
@@ -48,6 +44,7 @@
         <div class="character">
           <div
             class="character-img-container"
+            data-character="Haily"
             onmouseover="hoverCharacter('Haily')"
             onmouseout="resetTitle()"
           >
@@ -59,6 +56,7 @@
         <div class="character">
           <div
             class="character-img-container"
+            data-character="JUN"
             onmouseover="hoverCharacter('JUN')"
             onmouseout="resetTitle()"
           >
@@ -70,6 +68,7 @@
         <div class="character">
           <div
             class="character-img-container"
+            data-character="Linda"
             onmouseover="hoverCharacter('Linda')"
             onmouseout="resetTitle()"
           >
