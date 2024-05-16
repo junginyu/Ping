@@ -61,7 +61,7 @@ body {
 
 .main {
   text-align: center;
-  padding: 50px 20px;
+  padding: 50px 20px 30px 20px;
   flex: 1 0 auto;
   overflow: auto;
 }
@@ -70,7 +70,7 @@ body {
   font-family: "Laundry Gothic", sans-serif;
   font-size: 60px;
   font-weight: 800; /* 두껍게 설정 */
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   color: var(--text-normal);
 }
 
@@ -92,7 +92,7 @@ body {
 .character img {
   height: 500px;
   border-radius: 10px;
-  opacity: 0.5;
+  opacity: 0.3;
   pointer-events: all;
 }
 
