@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   if (!Kakao.isInitialized()) {
     // 카카오 SDK 초기화
-    Kakao.init(KAKAO_JAVASCRIPT_KEY); // 발급받은 JavaScript 키를 사용합니다.
+    Kakao.init(KAKAO_JAVASCRIPT_KEY);
     console.log(Kakao.isInitialized()); // SDK 초기화 여부 확인 (true)
   }
 
@@ -14,26 +14,26 @@ document.addEventListener("DOMContentLoaded", function () {
 // 로그인 상태에 따라 UI 업데이트
 function updateUI() {
   const authButton = document.getElementById("auth-button");
+  const logoutButton = document.getElementById("logout-button");
 
   if (Kakao.Auth.getAccessToken()) {
-    authButton.textContent = "로그아웃";
-    authButton.onclick = function () {
-      logout();
-    };
+    if (authButton) {
+      authButton.textContent = "프로필";
+      authButton.href = "profile.html";
+      authButton.onclick = null;
+    }
+    if (logoutButton) {
+      logoutButton.style.display = "block";
+    }
   } else {
-    authButton.textContent = "로그인";
-    authButton.onclick = function () {
-      loginWithKakao();
-    };
-  }
-}
-
-// 로그인 또는 로그아웃 버튼 클릭 핸들러
-function handleAuthButtonClick() {
-  if (Kakao.Auth.getAccessToken()) {
-    logout();
-  } else {
-    loginWithKakao();
+    if (authButton) {
+      authButton.textContent = "로그인";
+      authButton.href = "login.html";
+      authButton.onclick = handleAuthButtonClick;
+    }
+    if (logoutButton) {
+      logoutButton.style.display = "none";
+    }
   }
 }
 
@@ -48,8 +48,13 @@ function loginWithKakao() {
 function logout() {
   if (Kakao.Auth.getAccessToken()) {
     Kakao.Auth.logout(function () {
-      // alert("로그아웃 완료");
-      updateUI();
+      alert("로그아웃 완료");
+      window.location.href = "index.html"; // 로그아웃 후 메인 페이지로 이동
     });
   }
+}
+
+// 로그인 버튼 클릭 핸들러
+function handleAuthButtonClick() {
+  loginWithKakao();
 }
