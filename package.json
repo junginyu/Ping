@@ -1,0 +1,14 @@
+{
+  "name": "ping",
+  "version": "1.0.0",
+  "description": "웹프론트엔드 웹사이트 개발 과제",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "openai": "^4.47.1"
+  }
+}
