@@ -1,19 +1,27 @@
 const OpenAI = require('openai');
+const cors = require('cors');
+const express = require('express');
 require('dotenv').config();
-
-console.log(process.env.OPENAI_API_KEY);
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
-async function main() {
+const app = express()
+
+app.use(cors())
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+app.get('/ping', async function (req, res) {
   const completion = await openai.chat.completions.create({
     messages: [{ role: 'user', content: 'Say this is a test' }],
     model: 'gpt-3.5-turbo',
   });
 
-  console.log(completion.choices);
-}
+  let friend = completion.choices[0].message['content'];
+  console.log(friend);
+  res.send(friend);
+});
 
-main();
+app.listen(3000)
