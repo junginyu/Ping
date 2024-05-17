@@ -61,4 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   `;
     mainTitle.className = "default-title";
   }
+  
+  window.hoverCharacter = hoverCharacter;
+  window.resetTitle = resetTitle;
 });
