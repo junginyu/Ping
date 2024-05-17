@@ -21,6 +21,8 @@
     <script src="js/layout.js" defer></script>
     <!-- 캐릭터 선택 스크립트 파일 -->
     <script src="js/characterSelect.js" defer></script>
+    <!-- openai 스크립트 파일 -->
+    <script src="js/chat.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -32,9 +34,40 @@
         <a href="login.html" class="header-menu" id="auth-button">로그인</a>
       </nav>
     </header>
-    <main class="main">
-      <h1 id="chat-title">캐릭터와 채팅하기</h1>
-      <div id="character-name"></div>
-    </main>
+    <nav class="chat-with">
+      <div style="margin-top: 40px; margin-left: 40px; margin-right: 40px">
+        <div id="sidebar">
+          <div class="character-avatar active" id="jun-avatar">
+            <img src="media/JunChat.png" alt="JUN" />
+          </div>
+          <div class="character-avatar" id="linda-avatar">
+            <img src="media/LindaChat.png" alt="Linda" />
+          </div>
+          <div class="character-avatar" id="haily-avatar">
+            <img src="media/HailyChat.png" alt="Haily" />
+          </div>
+          <div class="add-character">
+            <img src="media/addFriend.png" alt="Add" />
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="chat-section">
+      <div id="chat-container">
+        <article>
+          <img src="media/JUN.svg" alt="JUN" />
+          <div id="chat-history"></div>
+        </article>
+        <div id="spinner" class="spinner" style="display: none"></div>
+        <div class="form-container">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="대화 내용을 작성해주세요."
+          />
+          <button id="send-button" disabled>전송</button>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
