@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign in to PING</title>
+    <title>PING: 내 프로필</title>
     <!-- 스타일 파일 -->
     <link rel="stylesheet" href="css/style.css" />
     <!-- Pretendard 폰트 포함 -->
@@ -32,10 +32,22 @@
         <a href="login.html" class="header-menu" id="auth-button">로그인</a>
       </nav>
     </header>
-    <main class="main">
+    <section class="main">
+      <div id="user-info">
+        <img
+          id="profile-image"
+          src=""
+          alt="Profile"
+          style="width: 100px; height: 100px; border-radius: 50%"
+        />
+        <p>닉네임: <span id="nickname"></span></p>
+        <p>이메일: <span id="email"></span></p>
+        <input type="text" id="nickname-input" placeholder="닉네임 수정" />
+        <button onclick="updateNickname()">닉네임 수정</button>
+      </div>
       <button id="logout-button" class="logout-button" onclick="logout()">
         로그아웃
       </button>
-    </main>
+    </section>
   </body>
 </html>
