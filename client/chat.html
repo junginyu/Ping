@@ -38,36 +38,46 @@
     </header>
     <nav class="chat-with">
       <div style="margin-top: 40px; margin-left: 40px; margin-right: 40px">
-        <div id="sidebar">
-          <div class="character-avatar active" id="jun-avatar">
-            <img src="media/JunChat.png" alt="JUN" />
-          </div>
-          <div class="character-avatar" id="linda-avatar">
-            <img src="media/LindaChat.png" alt="Linda" />
-          </div>
-          <div class="character-avatar" id="haily-avatar">
-            <img src="media/HailyChat.png" alt="Haily" />
-          </div>
-          <div class="add-character">
-            <img src="media/addFriend.png" alt="Add" />
-          </div>
+        <div class="character-avatar" id="jun-avatar" data-character-id="jun">
+          <img src="media/junNav.png" alt="JUN" />
+          <img src="media/junFlag.png" class="flag" alt="Japan" />
+        </div>
+        <div
+          class="character-avatar"
+          id="linda-avatar"
+          data-character-id="linda"
+        >
+          <img src="media/lindaNav.png" alt="Linda" />
+          <img src="media/lindaFlag.png" class="flag" alt="Spain" />
+        </div>
+        <div
+          class="character-avatar"
+          id="haily-avatar"
+          data-character-id="haily"
+        >
+          <img src="media/hailyNav.png" alt="Haily" />
+          <img src="media/hailyFlag.png" class="flag" alt="US" />
+        </div>
+        <div class="add-character">
+          <img src="media/addFriend.png" alt="Add" />
         </div>
       </div>
     </nav>
     <section class="chat-section">
       <div id="chat-container">
-        <article>
-          <img src="media/JUN.svg" alt="JUN" />
+        <article id="chat-article">
+          <img id="character-image" src="" alt="Character" />
           <div id="chat-history"></div>
         </article>
-        <div id="spinner" class="spinner" style="display: none"></div>
         <div class="form-container">
           <input
             type="text"
             id="chat-input"
             placeholder="대화 내용을 작성해주세요."
           />
-          <button id="send-button" disabled>전송</button>
+          <button id="send-button" disabled>
+            <img src="media/sendButton.svg" alt="전송" />
+          </button>
         </div>
       </div>
     </section>

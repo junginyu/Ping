@@ -5,8 +5,7 @@ let assistantMessages = [];
 async function postJSON(data) {
   const chatInput = document.getElementById("chat-input");
   const message = chatInput.value.trim();
-  displayMessage("You", message, "sent");
-  displayMessage("Ria", "", "received", true); // 스피너 활성화
+  displayMessage(message, "sent");
 
   try {
     //userMessages에 사용자의 메시지 저장
@@ -31,24 +30,15 @@ async function postJSON(data) {
     );
     const result = await response.json();
     console.log("성공:", result);
-    // 스피너 제거하고 새 메시지 추가
-    const chatHistory = document.getElementById("chat-history");
-    chatHistory.removeChild(chatHistory.lastChild);
-    displayMessage("Ria", result.assistant, "received");
+
+    displayMessage(result.assistant, "received");
 
     //assistantMessages에 gpt의 메시지 저장
     assistantMessages.push(result.assistant);
   } catch (error) {
     console.error("실패:", error);
-    displayMessage("Ria 채팅권이 다 나갔어요 🥲", "내일 또 방문해주세요!");
-  } finally {
-    spinner.style.display = "none"; // 스피너 숨김
+    displayMessage("이제 잘래.. 다음에 보자!");
   }
-}
-
-function displaySpinner(show) {
-  const spinner = document.getElementById("spinner");
-  spinner.style.display = show ? "block" : "none";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -73,61 +63,39 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function displayMessage(username, message, type, isSpinner = false) {
+function displayMessage(message, type) {
   const chatHistory = document.getElementById("chat-history");
 
   const messageElement = document.createElement("div");
-  messageElement.classList.add("message", type);
-
-  const profileElement = document.createElement("div");
-  profileElement.classList.add("profile-circle");
+  messageElement.classList.add(
+    "message",
+    type === "sent" ? "user" : "assistant"
+  );
 
   const textElement = document.createElement("div");
   textElement.classList.add("text-container");
+  textElement.textContent = message;
 
-  const usernameElement = document.createElement("div");
-  usernameElement.classList.add("username");
-  usernameElement.textContent = username;
-
-  const messageContentElement = document.createElement("div");
-  messageContentElement.classList.add("message-content");
-
-  if (isSpinner) {
-    const spinner = document.createElement("div");
-    spinner.className = "spinner";
-    messageContentElement.appendChild(spinner);
-  } else {
-    if (type === "received") {
-      // 보조원 메시지에만 타이핑 애니메이션 적용
-      messageContentElement.textContent = ""; // 초기 메시지 설정을 비움
-      // typeMessage(message, messageContentElement);
-    } else {
-      // 사용자 메시지는 즉시 표시
-      messageContentElement.textContent = message;
-    }
-  }
-
-  textElement.appendChild(usernameElement);
-  textElement.appendChild(messageContentElement);
-
-  messageElement.appendChild(profileElement);
   messageElement.appendChild(textElement);
-
-  chatHistory.appendChild(messageElement);
-  chatHistory.scrollTop = chatHistory.scrollHeight; // 스크롤을 최신 메시지 위치로 이동
+  chatHistory.prepend(messageElement);
+  chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 
-// function typeMessage(message, element) {
-//   let index = 0;
-//   const speed = 75; // 타이핑 속도 조절 (밀리초 단위)
+document.addEventListener("DOMContentLoaded", function () {
+  var chatInput = document.getElementById("chat-input");
+  var sendButton = document.getElementById("send-button");
 
-//   function type() {
-//     if (index < message.length) {
-//       element.textContent += message.charAt(index);
-//       index++;
-//       setTimeout(type, speed);
-//     }
-//   }
+  chatInput.addEventListener("keyup", function (event) {
+    sendButton.disabled = chatInput.value.trim() === "";
+    if (event.keyCode === 13 && !sendButton.disabled) {
+      event.preventDefault();
+      postJSON();
+    }
+  });
 
-//   type();
-// }
+  sendButton.addEventListener("click", function () {
+    if (!sendButton.disabled) {
+      postJSON();
+    }
+  });
+});
