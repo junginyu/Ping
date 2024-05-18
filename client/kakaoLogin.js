@@ -40,7 +40,7 @@ function updateUI() {
 // 로그인 함수
 function loginWithKakao() {
   Kakao.Auth.authorize({
-    redirectUri: "http://localhost:5500/client/kakaoCallback.html", // 리디렉트 URI 설정
+    redirectUri: "https://ping-chat.pages.dev/kakaoCallback", // 리디렉트 URI 설정
   });
 }
 

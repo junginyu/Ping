@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function setupChatMenu() {
   document.body.addEventListener("click", function (event) {
     if (event.target.id === "chat-menu") {
+      event.preventDefault();
       if (Kakao.Auth.getAccessToken()) {
         window.location.href = "chat.html";
       } else {
@@ -67,7 +68,7 @@ function updateCharacterNav() {
     characterElement.id = `${character}-avatar`;
 
     const charImg = document.createElement("img");
-    charImg.src = `media/${character}Nav.png`;
+    charImg.src = `media/${character.toLowerCase()}Nav.png`;
     charImg.alt = `${character}`;
     characterElement.appendChild(charImg);
 
@@ -93,7 +94,7 @@ function updateCharacterNav() {
   navContainer.appendChild(addButton);
 }
 
-// 현재 선택된 캐릭터를 활성화하고 표시합니다.
+// 현재 선택된 캐릭터를 활성화하고 표시
 function selectCurrentCharacter() {
   const selectedCharacter = localStorage.getItem("currentCharacter");
   if (!selectedCharacter) return;
@@ -108,17 +109,4 @@ function selectCurrentCharacter() {
 
   const characterImage = document.getElementById("character-image");
   characterImage.src = `media/${selectedCharacter.toLowerCase()}.svg`;
-}
-
-//테스트용 캐릭터 삭제 코드
-function deleteCharacter(character) {
-  let chatHistory = JSON.parse(localStorage.getItem("chatHistory") || "{}");
-  if (chatHistory[character]) {
-    delete chatHistory[character];
-    localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
-    updateCharacterNav(); // 캐릭터 네비게이션 업데이트
-    if (localStorage.getItem("currentCharacter") === character) {
-      localStorage.removeItem("currentCharacter");
-    }
-  }
 }

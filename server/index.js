@@ -4,7 +4,7 @@ const express = require("express");
 require("dotenv").config();
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 //serverless-http 설정

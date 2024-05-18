@@ -14,17 +14,17 @@
       rel="stylesheet"
     />
     <!-- Config 파일 -->
-    <script src="../server/config.js"></script>
+    <script src="config.js"></script>
     <!-- 카카오 JavaScript SDK -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- 로그인 스크립트 파일 -->
-    <script src="../server/kakaoLogin.js" defer></script>
+    <script src="kakaoLogin.js" defer></script>
     <!-- 레이아웃 조정 스크립트 파일 -->
-    <script src="../server/layout.js" defer></script>
+    <script src="layout.js" defer></script>
     <!-- 캐릭터 호버 스크립트 파일 -->
-    <script src="../server/characterHover.js" defer></script>
+    <script src="characterHover.js" defer></script>
     <!-- 캐릭터 선택 스크립트 파일 -->
-    <script src="../server/characterSelect.js" defer></script>
+    <script src="characterSelect.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -32,8 +32,12 @@
         <img src="media/PING.png" alt="PING Logo" class="logo" />
       </a>
       <nav class="nav">
-        <a href="#" class="header-menu" id="chat-menu">채팅</a>
-        <a href="login.html" class="header-menu" id="auth-button">로그인</a>
+        <a href="javascript:void(0);" class="header-menu" id="chat-menu"
+          >채팅</a
+        >
+        <a href="javascript:void(0);" class="header-menu" id="auth-button"
+          >로그인</a
+        >
       </nav>
     </header>
     <section class="main">

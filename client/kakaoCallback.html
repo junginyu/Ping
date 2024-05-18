@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>카카오 로그인</title>
     <!-- Config 파일 -->
-    <script src="../server/config.js"></script>
+    <script src="config.js"></script>
     <!-- 카카오 JavaScript SDK -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </head>
@@ -17,23 +17,29 @@
           Kakao.init(KAKAO_JAVASCRIPT_KEY);
           console.log(Kakao.isInitialized()); // SDK 초기화 여부 확인 (true)
         }
-
         // 리디렉트 URI에서 인가 코드를 받아 액세스 토큰 요청
         function getAccessTokenFromUrl() {
           const url = new URL(window.location.href);
           const code = url.searchParams.get("code");
           if (code) {
-            fetch(`https://kauth.kakao.com/oauth/token`, {
+            const bodyData = {
+              grant_type: "authorization_code",
+              client_id: KAKAO_JAVASCRIPT_KEY,
+              redirect_uri: "https://ping-chat.pages.dev/kakaoCallback",
+              code: code,
+            };
+            const queryStringBody = Object.keys(bodyData)
+              .map(
+                (k) =>
+                  encodeURIComponent(k) + "=" + encodeURIComponent(bodyData[k])
+              )
+              .join("&");
+            fetch("https://kauth.kakao.com/oauth/token", {
               method: "POST",
               headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "content-type": "application/x-www-form-urlencoded",
               },
-              body: new URLSearchParams({
-                grant_type: "authorization_code",
-                client_id: KAKAO_JAVASCRIPT_KEY,
-                redirect_uri: "http://localhost:5500/client/kakaoCallback.html",
-                code: code,
-              }),
+              body: queryStringBody,
             })
               .then((response) => response.json())
               .then((data) => {
@@ -41,7 +47,7 @@
                   Kakao.Auth.setAccessToken(data.access_token);
                   console.log(data.access_token);
 
-                  //사용자 정보 요청
+                  // 사용자 정보 요청
                   Kakao.API.request({
                     url: "/v2/user/me",
                     success: function (res) {
@@ -55,8 +61,7 @@
                         res.kakao_account.profile.nickname
                       );
                       localStorage.setItem("email", res.kakao_account.email);
-                      window.location.href =
-                        "http://localhost:5500/client/index.html";
+                      window.location.href = "https://ping-chat.pages.dev";
                     },
                     fail: function (error) {
                       console.log(error);
