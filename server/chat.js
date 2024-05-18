@@ -15,7 +15,7 @@ async function postJSON(data) {
     chatInput.value = "";
 
     const response = await fetch(
-      "https://rwvirffmt5en7wbzof5yyinsua0quade.lambda-url.ap-northeast-2.on.aws/portfolio",
+      "https://2y2fxobbnie5brsnwa3cm6ei6a0cxpuk.lambda-url.ap-northeast-2.on.aws/ping",
       {
         method: "POST",
         headers: {

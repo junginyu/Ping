@@ -18,7 +18,7 @@ const cors = require("cors");
 // app.use(cors())
 
 let corsOptions = {
-  origin: "https://portfolio-ria.pages.dev",
+  origin: "https://ping-chat.pages.dev",
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -29,7 +29,7 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // POST method route
-app.post("/portfolio", async function (req, res) {
+app.post("/ping", async function (req, res) {
   //프론트엔드에서 보낸 메시지 출력
   let { userMessages, assistantMessages } = req.body;
   console.log(userMessages);
@@ -76,7 +76,3 @@ app.post("/portfolio", async function (req, res) {
 });
 
 module.exports.handler = serverless(app);
-
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
-});
