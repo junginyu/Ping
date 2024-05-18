@@ -13,7 +13,7 @@
   --kakao-label: rgba(0, 0, 0, 0.85);
 }
 
-/* Laundry Gothic */
+/* Laundry Gothic 폰트 정의 */
 @font-face {
   font-family: "Laundry Gothic";
   src: url("../fonts/런드리고딕 Regular.woff") format("woff");

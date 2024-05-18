@@ -157,7 +157,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #000000; /* 색상은 사용자 인터페이스에 맞게 조정할 수 있습니다 */
+  background-color: #000000;
   animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0.34, 1);
 }
 
