@@ -1,6 +1,17 @@
 /* profile.css */
 @import url("style.css");
 
+.profile {
+  text-align: center;
+}
+
+#profile-image {
+  border: 1px solid var(--line-normal);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
 .logout-button {
   background-color: var(--background);
   color: var(--label-alternative);

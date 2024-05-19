@@ -37,22 +37,20 @@
           >로그인</a
         >
     </header>
-    <section class="main">
+    <section class="profile">
       <div id="user-info">
-        <img
-          id="profile-image"
-          src=""
-          alt="Profile"
-          style="width: 100px; height: 100px; border-radius: 50%"
-        />
-        <p>닉네임: <span id="nickname"></span></p>
-        <p>이메일: <span id="email"></span></p>
-        <input type="text" id="nickname-input" placeholder="닉네임 수정" />
-        <button onclick="updateNickname()">닉네임 수정</button>
+        <img id="profile-image" src="media/Haily.svg" alt="Profile" />
+        <p>이름<span id="nickname"></span></p>
+        <input type="text" id="nickname-input" placeholder="이름" /><br>
+        <p>국가<span id="email"></span></p>
+        <input type="text" id="nickname-input" placeholder="국가" /><br>
       </div>
-      <button id="logout-button" class="logout-button" onclick="logout()">
-        로그아웃
-      </button>
+      <div id="profile-buttons">
+        <button onclick="updateNickname()">저장</button>
+        <button id="logout-button" class="logout-button" onclick="logout()">
+          로그아웃
+        </button>
+      </div>
     </section>
   </body>
 </html>

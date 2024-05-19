@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const newNickname = document.getElementById("nickname-input").value;
     if (newNickname) {
       // 서버로 닉네임 업데이트 요청 보내기
-      fetch("https://your-server-url/update-nickname", {
+      fetch("https://ping-chat.pages.dev/update-nickname", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
