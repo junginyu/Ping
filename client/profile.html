@@ -36,20 +36,38 @@
         <a href="javascript:void(0);" class="header-menu" id="auth-button"
           >로그인</a
         >
+      </nav>
     </header>
     <section class="profile">
-      <div id="user-info">
-        <img id="profile-image" src="media/Haily.svg" alt="Profile" />
-        <p>이름<span id="nickname"></span></p>
-        <input type="text" id="nickname-input" placeholder="이름" /><br>
-        <p>국가<span id="email"></span></p>
-        <input type="text" id="nickname-input" placeholder="국가" /><br>
-      </div>
-      <div id="profile-buttons">
-        <button onclick="updateNickname()">저장</button>
-        <button id="logout-button" class="logout-button" onclick="logout()">
-          로그아웃
-        </button>
+      <div id="profile-container">
+        <img
+          id="profile-image"
+          src="media/earth.svg"
+          alt="Profile"
+          onclick="document.getElementById('image-upload').click();"
+        />
+        <input
+          type="file"
+          id="image-upload"
+          style="display: none"
+          accept="image/*"
+        />
+        <div style="margin-top: 20px; margin-bottom: 40px">
+          <div class="profile-info">
+            <label for="nickname-input">이름</label><br />
+            <input id="nickname-input" type="text" placeholder="이름" /><br />
+          </div>
+          <div class="profile-info">
+            <label for="country-select">국가</label><br />
+            <select id="country-select">
+              <option value="KR" selected>🇰🇷 대한민국</option>
+              <option value="US">🇺🇸 미국</option>
+              <option value="JP">🇯🇵 일본</option>
+            </select>
+          </div>
+        </div>
+        <button id="save-button" onclick="saveProfile()">저장</button>
+        <button id="logout-button" onclick="logout()">로그아웃</button>
       </div>
     </section>
   </body>
