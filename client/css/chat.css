@@ -135,11 +135,13 @@
 .message.user .text-container {
   background-color: #fff; /* 유저 메시지 배경색 */
   color: black;
+  text-align: left;
 }
 
 .message.assistant .text-container {
   background-color: var(--primary-normal); /* Assistant 메시지 배경색 */
   color: white;
+  text-align: left;
 }
 
 /* 스크롤바 기본 스타일 */
