@@ -1,0 +1,83 @@
+/* 색상 변수 정의 */
+:root {
+  --background: #f7f7fc;
+  --primary-normal: #3869fa;
+  --text-normal: #171717;
+  --text-alternative: #8a8a8a;
+  --label-normal: #828287;
+  --label-alternative: #171717;
+  --line-normal: #e0e0e2;
+  --line-alternative: #171717;
+  --kakao-container: #fee500;
+  --kakao-symbol: #000000;
+  --kakao-label: rgba(0, 0, 0, 0.85);
+}
+
+/* Laundry Gothic 폰트 정의 */
+@font-face {
+  font-family: "Laundry Gothic";
+  src: url("../fonts/런드리고딕 Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Laundry Gothic";
+  src: url("../fonts/런드리고딕 Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.laundry-font {
+  font-family: "Laundry Gothic", sans-serif;
+}
+
+/* 공통 스타일 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.header {
+  height: 3.5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 5vw 30px;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--line-normal);
+  flex: 0 0 auto;
+}
+
+body {
+  font-family: "Pretendard", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--text-normal);
+  overflow: none;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  width: 80px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.header-menu {
+  margin-left: 68px;
+  text-decoration: none;
+  color: var(--text-normal);
+  font-weight: 400;
+  font-size: 22px;
+  display: inline-block;
+}
