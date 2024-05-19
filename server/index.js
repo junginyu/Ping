@@ -1,21 +1,14 @@
 const OpenAI = require("openai");
 const cors = require("cors");
 const express = require("express");
+const serverless = require("serverless-http");
 require("dotenv").config();
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-//serverless-http 설정
-const serverless = require("serverless-http");
-
-const express = require("express");
 const app = express();
-
-//cors 문제 해결
-const cors = require("cors");
-// app.use(cors())
 
 let corsOptions = {
   origin: "https://ping-chat.pages.dev",
