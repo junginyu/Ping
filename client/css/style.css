@@ -2,10 +2,11 @@
 :root {
   --background: #f7f7fc;
   --primary-normal: #3869fa;
+  --primary-hover: #5680ff;
   --text-normal: #171717;
   --text-alternative: #8a8a8a;
   --label-normal: #828287;
-  --label-alternative: #171717;
+  --label-alternative: #818287;
   --line-normal: #e0e0e2;
   --line-alternative: #171717;
   --kakao-container: #fee500;

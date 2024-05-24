@@ -1,58 +1,67 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PING: 내 프로필</title>
-    <!-- 공통 스타일 파일 -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- profile 페이지 스타일 파일 -->
-    <link rel="stylesheet" href="css/profile.css" />
-    <!-- Pretendard 폰트 포함 -->
-    <link
-      href="https://cdn.jsdelivr.net/gh/pretendard/pretendard/dist/web/static/pretendard.css"
-      rel="stylesheet"
-    />
-    <!-- Config 파일 -->
-    <script src="config.js"></script>
-    <!-- 카카오 JavaScript SDK -->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <!-- 로그인 스크립트 파일 -->
-    <script src="kakaoLogin.js" defer></script>
-    <!-- 레이아웃 조정 스크립트 파일 -->
-    <script src="layout.js" defer></script>
-    <!-- 캐릭터 선택 스크립트 파일 -->
-    <script src="characterSelect.js" defer></script>
-  </head>
-  <body>
-    <header class="header">
-      <a href="index.html">
-        <img src="media/PING.png" alt="PING Logo" class="logo" />
-      </a>
-      <nav class="nav">
-        <a href="javascript:void(0);" class="header-menu" id="chat-menu"
-          >채팅</a
-        >
-        <a href="javascript:void(0);" class="header-menu" id="auth-button"
-          >로그인</a
-        >
-    </header>
-    <section class="main">
-      <div id="user-info">
-        <img
-          id="profile-image"
-          src=""
-          alt="Profile"
-          style="width: 100px; height: 100px; border-radius: 50%"
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PING: 내 프로필</title>
+        <!-- 공통 스타일 파일 -->
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- profile 페이지 스타일 파일 -->
+        <link rel="stylesheet" href="css/profile.css" />
+        <!-- Pretendard 폰트 포함 -->
+        <link
+            href="https://cdn.jsdelivr.net/gh/pretendard/pretendard/dist/web/static/pretendard.css"
+            rel="stylesheet"
         />
-        <p>닉네임: <span id="nickname"></span></p>
-        <p>이메일: <span id="email"></span></p>
-        <input type="text" id="nickname-input" placeholder="닉네임 수정" />
-        <button onclick="updateNickname()">닉네임 수정</button>
-      </div>
-      <button id="logout-button" class="logout-button" onclick="logout()">
-        로그아웃
-      </button>
-    </section>
-  </body>
+        <!-- Config 파일 -->
+        <script src="config.js"></script>
+        <!-- 카카오 JavaScript SDK -->
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <!-- 로그인 스크립트 파일 -->
+        <script src="kakaoLogin.js" defer></script>
+        <!-- 레이아웃 조정 스크립트 파일 -->
+        <script src="layout.js" defer></script>
+        <!-- 캐릭터 선택 스크립트 파일 -->
+        <script src="characterSelect.js" defer></script>
+        <!-- 프로필 스크립트 파일 -->
+        <script src="profile.js" defer></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html">
+                <img src="media/PING.png" alt="PING Logo" class="logo" />
+            </a>
+            <nav class="nav">
+                <a href="javascript:void(0);" class="header-menu" id="chat-menu">채팅</a>
+                <a href="javascript:void(0);" class="header-menu" id="auth-button">로그인</a>
+            </nav>
+        </header>
+        <section class="profile">
+            <div id="profile-container">
+                <img
+                    id="profile-image"
+                    src=""
+                    alt="Profile"
+                    onclick="document.getElementById('image-upload').click();"
+                />
+                <input type="file" id="image-upload" style="display: none" accept="image/*" />
+                <div style="margin-top: 20px; margin-bottom: 40px">
+                    <div class="profile-info">
+                        <label for="nickname-input">이름</label><br />
+                        <input id="nickname-input" type="text" placeholder="이름" /><br />
+                    </div>
+                    <div class="profile-info">
+                        <label for="country-select">국가</label><br />
+                        <select id="country-select">
+                            <option value="KR" selected>🇰🇷 대한민국</option>
+                            <option value="US">🇺🇸 미국</option>
+                            <option value="JP">🇯🇵 일본</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="save-button" onclick="saveProfile()">저장</button>
+                <button id="logout-button" onclick="logout()">로그아웃</button>
+            </div>
+        </section>
+    </body>
 </html>
