@@ -2,84 +2,84 @@
 @import url("style.css");
 
 #profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
 }
 
 #profile-image {
-  border: 1px solid var(--line-normal);
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-  object-fit: cover;
+    border: 1px solid var(--line-normal);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    object-fit: cover;
 }
 
 .profile-info {
-  width: 335px;
-  padding: 16px 20px;
+    width: 335px;
+    padding: 16px 20px;
 }
 
 .profile-info > label {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--label-alternative);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--label-alternative);
 }
 
 input[type="text"],
 select {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border: 1px solid var(--line-normal);
-  border-radius: 10px;
-  box-sizing: border-box;
-  font-size: 16px;
-  font-weight: 400;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid var(--line-normal);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("../media/selectboxArrow.svg");
-  background-size: 18px;
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  background-color: white;
-  cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("../media/selectboxArrow.svg");
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-color: white;
+    cursor: pointer;
 }
 
 #save-button {
-  border: none;
-  border-radius: 20px;
-  background-color: var(--primary-normal);
-  color: white;
-  width: 335px;
-  height: 64px;
-  font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--primary-normal);
+    color: white;
+    width: 335px;
+    height: 64px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
 #save-button:hover {
-  background-color: var(--primary-hover);
+    background-color: var(--primary-hover);
 }
 
 #logout-button {
-  background-color: var(--background);
-  color: var(--label-alternative);
-  border: none;
-  font-size: 20px;
-  font-weight: 600;
-  padding-top: 20px;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
+    background-color: var(--background);
+    color: var(--label-alternative);
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
 }
 
 #logout-button:hover {
-  color: #acabab;
+    color: #acabab;
 }
