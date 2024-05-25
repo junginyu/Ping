@@ -1,4 +1,5 @@
-import { getInitialMessages } from "../client/gptPrompt.js";
+//index.js
+const { getInitialMessages } = require("./gptPromptServer");
 const OpenAI = require("openai");
 const cors = require("cors");
 const express = require("express");
@@ -16,7 +17,6 @@ let corsOptions = {
     credentials: true,
 };
 app.use(cors(corsOptions));
-
 app.options("*", cors(corsOptions)); // 모든 경로에 대해 CORS preflight 요청을 허용
 
 app.use(express.json());
@@ -25,9 +25,11 @@ app.use(express.urlencoded({ extended: true }));
 // POST method route
 app.post("/ping", async function (req, res) {
     const { userMessages, assistantMessages, character } = req.body;
-    let messages = getInitialMessages(character);
-    console.log(userMessages);
-    console.log(assistantMessages);
+    let messages = getInitialMessages(character.toLowerCase());
+
+    console.log("User Messages: ", userMessages);
+    console.log("GPT Messages: ", assistantMessages);
+    console.log("Initial Messages: ", messages);
 
     while (userMessages.length != 0 || assistantMessages.length != 0) {
         if (userMessages.length != 0) {
@@ -52,13 +54,19 @@ app.post("/ping", async function (req, res) {
         }
     }
 
-    const completion = await openai.chat.completions.create({
-        messages: messages,
-        model: "gpt-4-turbo",
-    });
-
-    let portfolio = completion.choices[0].message["content"];
-    res.json({ assistant: portfolio });
+    try {
+        console.log("Final messages before sending to API:", JSON.stringify(messages));
+        const completion = await openai.chat.completions.create({
+            messages: messages,
+            model: "gpt-4-turbo",
+        });
+        console.log("API Response:", JSON.stringify(completion));
+        let ping = completion.choices[0].message["content"];
+        res.json({ assistant: ping });
+    } catch (error) {
+        console.error("API Request Failed: ", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 });
 
 module.exports.handler = serverless(app);

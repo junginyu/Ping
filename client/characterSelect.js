@@ -38,20 +38,22 @@ function setupChatMenu() {
 
 // 대화 시작 버튼 클릭 시 실행되는 함수입니다.
 function handleChatButtonClick(character) {
+    const formattedCharactereId = character.toLowerCase();
     if (Kakao.Auth.getAccessToken()) {
-        startChat(character);
+        startChat(formattedCharactereId);
     } else {
-        window.location.href = "login.html";
+        window.location.href = "login.html"; // 로그인 페이지로 리디렉션
     }
 }
 
 // 대화를 시작하고, 캐릭터 선택을 저장합니다.
 function startChat(character) {
+    console.log("Starting chat with:", character);
     let chatHistory = JSON.parse(localStorage.getItem("chatHistory") || "{}");
     if (!chatHistory[character]) {
         chatHistory[character] = [];
-        localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
     }
+    localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
     localStorage.setItem("currentCharacter", character);
     window.location.href = "chat.html";
 }
@@ -83,6 +85,7 @@ function updateCharacterNav() {
         characterElement.addEventListener("click", () => {
             localStorage.setItem("currentCharacter", character);
             selectCurrentCharacter();
+            window.location.reload();
         });
     });
 

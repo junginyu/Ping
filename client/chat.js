@@ -1,3 +1,6 @@
+//chat.js
+import { getInitialMessages } from "./gptPromptClient.js";
+
 let currentCharacter = localStorage.getItem("currentCharacter") || "default";
 
 async function postJSON() {
@@ -9,6 +12,8 @@ async function postJSON() {
     chatInput.value = ""; // 채팅 보내고 나서 초기화
 
     try {
+        const initialMessages = getInitialMessages(currentCharacter);
+        console.log("Selected Character: ", currentCharacter);
         const response = await fetch(
             "https://2y2fxobbnie5brsnwa3cm6ei6a0cxpuk.lambda-url.ap-northeast-2.on.aws/ping",
             {
@@ -17,10 +22,13 @@ async function postJSON() {
                     "Content-Type": "application/json",
                 },
                 credentials: "include", // 쿠키 등 인증 정보 포함
-                body: JSON.stringify({ userMessages: [message], assistantMessages: [] }),
+                body: JSON.stringify({
+                    userMessages: [message],
+                    assistantMessages: initialMessages,
+                    character: currentCharacter,
+                }),
             }
         );
-
         const result = await response.json();
         console.log("성공:", result);
         displayMessage(result.assistant, "assistant", currentCharacter);
@@ -29,12 +37,13 @@ async function postJSON() {
         displayMessage(getErrorMessage(currentCharacter), "assistant", currentCharacter);
     }
 }
+
 // 캐릭터별로 다른 오류 메시지를 설정
 function getErrorMessage(character) {
     const errorMessages = {
-        Haily: "I'm a little tired today... See you next time!",
-        JUN: "今日はちょっと疲れた...。また今度ね！",
-        Linda: "Hoy estoy un poco cansado... Hasta la próxima.",
+        haily: "I'm a little tired today... See you next time!",
+        jun: "今日はちょっと疲れた...。また今度ね！",
+        linda: "Hoy estoy un poco cansado... Hasta la próxima.",
         default: "이제 잘래.. 다음에 보자!",
     };
     return errorMessages[character] || errorMessages.default;
@@ -88,7 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    loadChatHistory(currentCharacter); // 로드 시 이전 대화 내역을 불러옵니다.
+    if (currentCharacter) {
+        loadChatHistory(currentCharacter); // 로드 시 이전 대화 내역을 불러옵니다.
+    }
 });
 
 function loadChatHistory(character) {
