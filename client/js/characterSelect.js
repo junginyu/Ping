@@ -1,5 +1,4 @@
 // characterSelect.js
-
 // 페이지 로드 완료 후 실행되는 함수들을 설정합니다.
 document.addEventListener("DOMContentLoaded", function () {
     setupChatMenu();
@@ -15,9 +14,9 @@ function setupChatMenu() {
         if (event.target.id === "chat-menu") {
             event.preventDefault();
             if (Kakao.Auth.getAccessToken()) {
-                window.location.href = "chat.html";
+                window.location.href = "../chat.html";
             } else {
-                window.location.href = "login.html";
+                window.location.href = "../login.html";
             }
         } else if (
             event.target.classList.contains("character-img-container") ||
@@ -42,7 +41,7 @@ function handleChatButtonClick(character) {
     if (Kakao.Auth.getAccessToken()) {
         startChat(formattedCharactereId);
     } else {
-        window.location.href = "login.html"; // 로그인 페이지로 리디렉션
+        window.location.href = "../login.html"; // 로그인 페이지로 리디렉션
     }
 }
 
@@ -55,45 +54,55 @@ function startChat(character) {
     }
     localStorage.setItem("chatHistory", JSON.stringify(chatHistory));
     localStorage.setItem("currentCharacter", character);
-    window.location.href = "chat.html";
+    window.location.href = "../chat.html";
 }
 
 // 채팅 페이지에서 캐릭터 목록을 업데이트합니다.
 function updateCharacterNav() {
     const chatHistory = JSON.parse(localStorage.getItem("chatHistory") || "{}");
     const navContainer = document.querySelector(".chat-with");
+    const noCharacterSection = document.querySelector(".no-characters");
+    const chatContainer = document.querySelector("#chat-container");
     navContainer.innerHTML = ""; // 초기화
 
-    Object.keys(chatHistory).forEach((character) => {
-        const characterElement = document.createElement("div");
-        characterElement.className = "character-avatar";
-        characterElement.id = `${character}-avatar`;
+    const characterKeys = Object.keys(chatHistory);
+    if (characterKeys.length === 0) {
+        noCharacterSection.style.display = "block";
+        chatContainer.style.display = "none";
+    } else {
+        noCharacterSection.style.display = "none";
+        chatContainer.style.display = "flex";
+        Object.keys(chatHistory).forEach((character) => {
+            const characterElement = document.createElement("div");
+            characterElement.className = "character-avatar";
+            characterElement.id = `${character}-avatar`;
 
-        const charImg = document.createElement("img");
-        charImg.src = `media/${character.toLowerCase()}Nav.png`;
-        charImg.alt = `${character}`;
-        characterElement.appendChild(charImg);
+            const charImg = document.createElement("img");
+            charImg.src = `../media/${character.toLowerCase()}Nav.png`;
+            charImg.alt = `${character}`;
+            characterElement.appendChild(charImg);
 
-        const flagImg = document.createElement("img");
-        flagImg.src = `media/${character.toLowerCase()}Flag.png`;
-        flagImg.alt = `${character} Flag`;
-        flagImg.className = "flag";
-        characterElement.appendChild(flagImg);
+            const flagImg = document.createElement("img");
+            flagImg.src = `../media/${character.toLowerCase()}Flag.png`;
+            flagImg.alt = `${character} Flag`;
+            flagImg.className = "flag";
+            characterElement.appendChild(flagImg);
 
-        navContainer.appendChild(characterElement);
+            navContainer.appendChild(characterElement);
 
-        characterElement.addEventListener("click", () => {
-            localStorage.setItem("currentCharacter", character);
-            selectCurrentCharacter();
-            window.location.reload();
+            characterElement.addEventListener("click", () => {
+                localStorage.setItem("currentCharacter", character);
+                selectCurrentCharacter();
+                window.location.reload();
+            });
         });
-    });
+    }
 
     // 새 캐릭터 추가 버튼 항상 표시
     const addButton = document.createElement("div");
     addButton.className = "add-character";
-    addButton.innerHTML = '<img src="media/addFriend.png" alt="Add" />';
-    addButton.onclick = () => (window.location.href = "index.html");
+    addButton.innerHTML = '<img src="../media/addFriend.png" alt="Add" />';
+    addButton.onclick = () => (window.location.href = "../index.html");
     navContainer.appendChild(addButton);
 }
 
@@ -111,5 +120,5 @@ function selectCurrentCharacter() {
     });
 
     const characterImage = document.getElementById("character-image");
-    characterImage.src = `media/${selectedCharacter.toLowerCase()}.svg`;
+    characterImage.src = `../media/${selectedCharacter.toLowerCase()}.svg`;
 }

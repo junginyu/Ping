@@ -1,5 +1,4 @@
 // kakaoLogin.js
-
 document.addEventListener("DOMContentLoaded", function () {
     if (!Kakao.isInitialized()) {
         // 카카오 SDK 초기화
@@ -15,11 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
 function updateUI() {
     const authButton = document.getElementById("auth-button");
     const logoutButton = document.getElementById("logout-button");
+    const storedProfileImage = localStorage.getItem("profile_image");
 
     if (Kakao.Auth.getAccessToken()) {
         if (authButton) {
-            authButton.textContent = "프로필";
-            authButton.href = "profile.html";
+            authButton.innerHTML = `<img id='header-profile-image' src='${
+                storedProfileImage || "media/default-profile.svg"
+            }' style='width: 40px; height: 40px; border: 1px solid var(--line-normal); border-radius: 50%; cursor: pointer; object-fit: cover;'>`;
+            authButton.href = "../profile.html";
             authButton.onclick = null;
         }
         if (logoutButton) {
@@ -28,7 +30,7 @@ function updateUI() {
     } else {
         if (authButton) {
             authButton.textContent = "로그인";
-            authButton.href = "login.html";
+            authButton.href = "../login.html";
             authButton.onclick = handleAuthButtonClick;
         }
         if (logoutButton) {
@@ -48,7 +50,8 @@ function loginWithKakao() {
 function logout() {
     if (Kakao.Auth.getAccessToken()) {
         Kakao.Auth.logout(function () {
-            window.location.href = "index.html"; // 로그아웃 후 메인 페이지로 이동
+            localStorage.clear();
+            window.location.href = "../index.html"; // 로그아웃 후 메인 페이지로 이동
         });
     }
 }

@@ -1,8 +1,5 @@
 //profile.js
-
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Document ready!");
-
     const profileImage = localStorage.getItem("profile_image");
     const nickname = localStorage.getItem("nickname");
 
@@ -31,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.logout = function () {
         Kakao.Auth.logout(function () {
             localStorage.clear();
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
         });
     };
 

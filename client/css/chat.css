@@ -23,6 +23,7 @@
     transition: opacity 0.5s;
     opacity: 0.3;
     z-index: 2;
+    cursor: pointer;
 }
 
 .character-avatar.active img {
@@ -49,8 +50,33 @@
     text-align: center;
 }
 
-/* chat-style */
+.no-characters {
+    margin-top: 200px;
+}
 
+.chat-content {
+    font-family: "Laundry Gothic", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    color: var(--text-normal);
+}
+
+.no-character-add {
+    font-family: "Pretendard", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--primary-normal);
+    color: white;
+    width: 302px;
+    height: 64px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* chat-style */
 #chat-container {
     display: flex;
     flex-direction: column;
@@ -103,7 +129,6 @@
 }
 
 /* 채팅 내용 */
-
 #chat-history {
     display: flex;
     flex-direction: column-reverse;
