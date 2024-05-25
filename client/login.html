@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign in to PING</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/login.css" />
-    <script src="config.js"></script>
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script src="kakaoLogin.js" defer></script>
-    <script src="layout.js" defer></script>
-  </head>
-  <body>
-    <header class="header">
-      <a href="index.html">
-        <img src="media/PING.png" alt="PING Logo" class="logo" />
-      </a>
-      <nav class="nav">
-      <a href="javascript:void(0);" class="header-menu" id="chat-menu"
-        >채팅</a
-      >
-      <a href="javascript:void(0);" class="header-menu" id="auth-button"
-        >로그인</a
-      >
-    </header>
-    <section class="login-main">
-      <img src="media/earth.svg" alt="Earth" />
-      <p class="login-content">로그인하고<br />전세계 친구 사귀기</p>
-      <button
-        class="login-button"
-        id="auth-button"
-        onclick="handleAuthButtonClick()"
-      >
-        <img src="media/kakaoLoginButton.svg" alt="카카오 심볼" />
-      </button>
-    </section>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign in to PING</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/login.css" />
+        <script src="js/config.js"></script>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script src="js/kakaoLogin.js" defer></script>
+        <script src="js/layout.js" defer></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html">
+                <img src="media/PING.png" alt="PING Logo" class="logo" />
+            </a>
+            <nav class="nav">
+                <a href="javascript:void(0);" class="header-menu" id="chat-menu">채팅</a>
+                <a href="javascript:void(0);" class="header-menu" id="auth-button">로그인</a>
+            </nav>
+        </header>
+        <section class="login-main">
+            <img src="media/earth.svg" alt="Earth" />
+            <p class="login-content">로그인하고<br />전세계 친구 사귀기</p>
+            <button class="login-button" id="auth-button" onclick="handleAuthButtonClick()">
+                <img src="media/kakaoLoginButton.svg" alt="카카오 심볼" />
+            </button>
+        </section>
+    </body>
 </html>

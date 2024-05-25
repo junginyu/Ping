@@ -1,5 +1,4 @@
 // kakaoLogin.js
-
 document.addEventListener("DOMContentLoaded", function () {
     if (!Kakao.isInitialized()) {
         // 카카오 SDK 초기화
@@ -19,7 +18,7 @@ function updateUI() {
     if (Kakao.Auth.getAccessToken()) {
         if (authButton) {
             authButton.textContent = "프로필";
-            authButton.href = "profile.html";
+            authButton.href = "../profile.html";
             authButton.onclick = null;
         }
         if (logoutButton) {
@@ -28,7 +27,7 @@ function updateUI() {
     } else {
         if (authButton) {
             authButton.textContent = "로그인";
-            authButton.href = "login.html";
+            authButton.href = "../login.html";
             authButton.onclick = handleAuthButtonClick;
         }
         if (logoutButton) {
@@ -48,7 +47,7 @@ function loginWithKakao() {
 function logout() {
     if (Kakao.Auth.getAccessToken()) {
         Kakao.Auth.logout(function () {
-            window.location.href = "index.html"; // 로그아웃 후 메인 페이지로 이동
+            window.location.href = "../index.html"; // 로그아웃 후 메인 페이지로 이동
         });
     }
 }

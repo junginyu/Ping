@@ -1,6 +1,4 @@
 // layout.js
-
-// 창 크기 조정 함수
 function adjustLayout() {
     const header = document.querySelector(".header");
     const main = document.querySelector(".main");
