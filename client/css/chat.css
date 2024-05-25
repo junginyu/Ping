@@ -23,6 +23,7 @@
     transition: opacity 0.5s;
     opacity: 0.3;
     z-index: 2;
+    cursor: pointer;
 }
 
 .character-avatar.active img {
