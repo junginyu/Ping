@@ -61,32 +61,42 @@ function startChat(character) {
 function updateCharacterNav() {
     const chatHistory = JSON.parse(localStorage.getItem("chatHistory") || "{}");
     const navContainer = document.querySelector(".chat-with");
+    const noCharacterSection = document.querySelector(".no-characters");
+    const chatContainer = document.querySelector("#chat-container");
     navContainer.innerHTML = ""; // 초기화
 
-    Object.keys(chatHistory).forEach((character) => {
-        const characterElement = document.createElement("div");
-        characterElement.className = "character-avatar";
-        characterElement.id = `${character}-avatar`;
+    const characterKeys = Object.keys(chatHistory);
+    if (characterKeys.length === 0) {
+        noCharacterSection.style.display = "block";
+        chatContainer.style.display = "none";
+    } else {
+        noCharacterSection.style.display = "none";
+        chatContainer.style.display = "flex";
+        Object.keys(chatHistory).forEach((character) => {
+            const characterElement = document.createElement("div");
+            characterElement.className = "character-avatar";
+            characterElement.id = `${character}-avatar`;
 
-        const charImg = document.createElement("img");
-        charImg.src = `../media/${character.toLowerCase()}Nav.png`;
-        charImg.alt = `${character}`;
-        characterElement.appendChild(charImg);
+            const charImg = document.createElement("img");
+            charImg.src = `../media/${character.toLowerCase()}Nav.png`;
+            charImg.alt = `${character}`;
+            characterElement.appendChild(charImg);
 
-        const flagImg = document.createElement("img");
-        flagImg.src = `../media/${character.toLowerCase()}Flag.png`;
-        flagImg.alt = `${character} Flag`;
-        flagImg.className = "flag";
-        characterElement.appendChild(flagImg);
+            const flagImg = document.createElement("img");
+            flagImg.src = `../media/${character.toLowerCase()}Flag.png`;
+            flagImg.alt = `${character} Flag`;
+            flagImg.className = "flag";
+            characterElement.appendChild(flagImg);
 
-        navContainer.appendChild(characterElement);
+            navContainer.appendChild(characterElement);
 
-        characterElement.addEventListener("click", () => {
-            localStorage.setItem("currentCharacter", character);
-            selectCurrentCharacter();
-            window.location.reload();
+            characterElement.addEventListener("click", () => {
+                localStorage.setItem("currentCharacter", character);
+                selectCurrentCharacter();
+                window.location.reload();
+            });
         });
-    });
+    }
 
     // 새 캐릭터 추가 버튼 항상 표시
     const addButton = document.createElement("div");
