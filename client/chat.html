@@ -1,88 +1,73 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PING: 외국인 친구와 대화하기</title>
-    <!-- 공통 스타일 파일 -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- chat 페이지 스타일 파일 -->
-    <link rel="stylesheet" href="css/chat.css" />
-    <!-- Pretendard 폰트 포함 -->
-    <link
-      href="https://cdn.jsdelivr.net/gh/pretendard/pretendard/dist/web/static/pretendard.css"
-      rel="stylesheet"
-    />
-    <!-- Config 파일 -->
-    <script src="config.js"></script>
-    <!-- 카카오 JavaScript SDK -->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <!-- 로그인 스크립트 파일 -->
-    <script src="kakaoLogin.js" defer></script>
-    <!-- 레이아웃 조정 스크립트 파일 -->
-    <script src="layout.js" defer></script>
-    <!-- 캐릭터 선택 스크립트 파일 -->
-    <script src="characterSelect.js" defer></script>
-    <!-- openai 스크립트 파일 -->
-    <script src="chat.js" defer></script>
-  </head>
-  <body>
-    <header class="header">
-      <a href="index.html">
-        <img src="media/PING.png" alt="PING Logo" class="logo" />
-      </a>
-      <nav class="nav">
-        <a href="javascript:void(0);" class="header-menu" id="chat-menu"
-          >채팅</a
-        >
-        <a href="javascript:void(0);" class="header-menu" id="auth-button"
-          >로그인</a
-        >
-    </header>
-    <nav class="chat-with">
-      <div style="margin-top: 40px; margin-left: 40px; margin-right: 40px">
-        <div class="character-avatar" id="jun-avatar" data-character-id="jun">
-          <img src="media/junNav.png" alt="JUN" />
-          <img src="media/junFlag.png" class="flag" alt="Japan" />
-        </div>
-        <div
-          class="character-avatar"
-          id="linda-avatar"
-          data-character-id="linda"
-        >
-          <img src="media/lindaNav.png" alt="Linda" />
-          <img src="media/lindaFlag.png" class="flag" alt="Spain" />
-        </div>
-        <div
-          class="character-avatar"
-          id="haily-avatar"
-          data-character-id="haily"
-        >
-          <img src="media/hailyNav.png" alt="Haily" />
-          <img src="media/hailyFlag.png" class="flag" alt="US" />
-        </div>
-        <div class="add-character">
-          <img src="media/addFriend.png" alt="Add" />
-        </div>
-      </div>
-    </nav>
-    <section class="chat-section">
-      <div id="chat-container">
-        <article id="chat-article">
-          <img id="character-image" src="" alt="Character" />
-          <div id="chat-history"></div>
-        </article>
-        <div class="form-container">
-          <input
-            type="text"
-            id="chat-input"
-            placeholder="대화 내용을 작성해주세요."
-          />
-          <button id="send-button" disabled>
-            <img src="media/sendButton.svg" alt="전송" />
-          </button>
-        </div>
-      </div>
-    </section>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PING: 외국인 친구와 대화하기</title>
+        <!-- 공통 스타일 파일 -->
+        <link rel="stylesheet" href="css/style.css" />
+        <!-- chat 페이지 스타일 파일 -->
+        <link rel="stylesheet" href="css/chat.css" />
+        <!-- Pretendard 폰트 포함 -->
+        <link
+            href="https://cdn.jsdelivr.net/gh/pretendard/pretendard/dist/web/static/pretendard.css"
+            rel="stylesheet"
+        />
+        <!-- Config 파일 -->
+        <script src="config.js"></script>
+        <!-- 카카오 JavaScript SDK -->
+        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <!-- 로그인 스크립트 파일 -->
+        <script src="kakaoLogin.js" defer></script>
+        <!-- 레이아웃 조정 스크립트 파일 -->
+        <script src="layout.js" defer></script>
+        <!-- 캐릭터 선택 스크립트 파일 -->
+        <script src="characterSelect.js" defer></script>
+        <!-- openai 스크립트 파일 -->
+        <script src="chat.js" type="module"></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="index.html">
+                <img src="media/PING.png" alt="PING Logo" class="logo" />
+            </a>
+            <nav class="nav">
+                <a href="javascript:void(0);" class="header-menu" id="chat-menu">채팅</a>
+                <a href="javascript:void(0);" class="header-menu" id="auth-button">로그인</a>
+            </nav>
+        </header>
+        <nav class="chat-with">
+            <div style="margin-top: 40px; margin-left: 40px; margin-right: 40px">
+                <div class="character-avatar" id="jun-avatar" data-character-id="jun">
+                    <img src="media/junNav.png" alt="JUN" />
+                    <img src="media/junFlag.png" class="flag" alt="Japan" />
+                </div>
+                <div class="character-avatar" id="linda-avatar" data-character-id="linda">
+                    <img src="media/lindaNav.png" alt="Linda" />
+                    <img src="media/lindaFlag.png" class="flag" alt="Spain" />
+                </div>
+                <div class="character-avatar" id="haily-avatar" data-character-id="haily">
+                    <img src="media/hailyNav.png" alt="Haily" />
+                    <img src="media/hailyFlag.png" class="flag" alt="US" />
+                </div>
+                <div class="add-character">
+                    <img src="media/addFriend.png" alt="Add" />
+                </div>
+            </div>
+        </nav>
+        <section class="chat-section">
+            <div id="chat-container">
+                <article id="chat-article">
+                    <img id="character-image" src="" alt="Character" />
+                    <div id="chat-history"></div>
+                </article>
+                <div class="form-container">
+                    <input type="text" id="chat-input" placeholder="대화 내용을 작성해주세요." />
+                    <button id="send-button" disabled>
+                        <img src="media/sendButton.svg" alt="전송" />
+                    </button>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
