@@ -29,7 +29,6 @@ async function postJSON() {
         displayMessage(getErrorMessage(currentCharacter), "assistant", currentCharacter);
     }
 }
-
 // 캐릭터별로 다른 오류 메시지를 설정
 function getErrorMessage(character) {
     const errorMessages = {
